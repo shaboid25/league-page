@@ -123,4 +123,4 @@
 			{/each}
 		</ul>
 	</div>
-	
+</footer>	
