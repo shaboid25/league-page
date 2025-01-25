@@ -7,14 +7,14 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>This is an example of what our league would look like if we started using the Sleeper platform. This has been built using Svelte and SvelteKit
+  <p>This is an example of what our league website would look like if we started using the Sleeper Fantasy platform. This has been built using Svelte and SvelteKit
 Desktop, Mobile and PWA compatible
 League information generated from Sleeper API</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p>If you would be okay with migrating platforms away from fantasy.nfl.com, please indicate that on the survey that is being released prior to the Super Bowl</p>
+  <p>If you have no confidence in Jacob Conley as the commissioner, please send an email to commish@thebigthangtheory.com</p>
+  <p>As we move past the decade mark of the league, changes are undoubtedly going occur. Your input is always valued and can be submitted to commish@thebigthangtheory.com</p>
+  <p>We will be able to maintain the historical records for the league, as well as expand on how these records are held moving forward.</p>
+  <p>If you have any questions, please let me know.</p>
 `;
 
 /*   STEP 3   */
