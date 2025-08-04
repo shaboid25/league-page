@@ -1,380 +1,334 @@
 <script>
-    import { gotoManager } from '$lib/utils/helper';
-	import { getAvatarFromTeamManagers, getNestedTeamNamesFromTeamManagers } from '$lib/utils/helperFunctions/universalFunctions';
-	export let podium, leagueTeamManagers;
+    // The Annals - Big Thang Theory League History
+    
+    // Championship History Data
+    const champions = [
+        { year: 2024, team: "Aumsville Mudhens", record: "8-6-0" },
+        { year: 2023, team: "Team 9", record: "10-4-0" },
+        { year: 2022, team: "88Dancing bears", record: "10-4-0" },
+        { year: 2021, team: "Pack of Wild Bonzo's", record: "8-6-0" },
+        { year: 2020, team: "Aumsville Mudhens", record: "10-3-0" },
+        { year: 2019, team: "Champagnemarinade", record: "8-5-0" },
+        { year: 2018, team: "Pack of Wild Bonzo's", record: "11-2-0" },
+        { year: 2017, team: "Champagnemarinade", record: "8-5-0" },
+        { year: 2016, team: "Nwlove", record: "9-4-0" },
+        { year: 2015, team: "Pack of Wild Bonzo's", record: "9-4-0" }
+    ];
 
-	const { year, champion, second, third, divisions, toilet } = podium;
+    // Season Scoring Leaders
+    const seasonScorers = [
+        { year: 2024, team: "Pack of Wild Bonzo's", points: 1533.64 },
+        { year: 2023, team: "88Dancing bears", points: 1446.66 },
+        { year: 2022, team: "Champagnemarinade", points: 1588.18 },
+        { year: 2021, team: "Mama Bear", points: 1550.42 },
+        { year: 2020, team: "Champagnemarinade", points: 1472.42 },
+        { year: 2019, team: "Aumsville Mudhens", points: 1607.18 },
+        { year: 2018, team: "Nwlove", points: 1561.04 },
+        { year: 2017, team: "Champagnemarinade", points: 1353.88 },
+        { year: 2016, team: "Pack of Wild Bonzo's", points: 1448.08 },
+        { year: 2015, team: "Pack of Wild Bonzo's", points: 1406.24 }
+    ];
+
+    // Weekly High Scorers
+    const weeklyScorers = [
+        { year: 2024, player: "J. Allen", position: "QB", team: "Aumsville Mudhens", week: 14, points: 54.88 },
+        { year: 2023, player: "D. Achane", position: "RB", team: "Pack of Wild Bonzo's", week: 3, points: 50.80 },
+        { year: 2022, player: "J. Mixon", position: "RB", team: "Spotieotiedopealiciousangels", week: 9, points: 51.10 },
+        { year: 2021, player: "J. Taylor", position: "RB", team: "Team 9", week: 11, points: 50.40 },
+        { year: 2020, player: "A. Kamara", position: "RB", team: "88Dancing bears", week: 16, points: 53.70 },
+        { year: 2019, player: "A. Rodgers", position: "QB", team: "Rabble Rousers", week: 7, points: 48.76 },
+        { year: 2018, player: "D. Henry", position: "RB", team: "Nwlove", week: 14, points: 52.80 },
+        { year: 2017, player: "T. Gurley", position: "RB", team: "Champagnemarinade", week: 15, points: 43.50 },
+        { year: 2016, player: "L. Bell", position: "RB", team: "88Dancing bears", week: 14, points: 49.80 },
+        { year: 2015, player: "D. Brees", position: "QB", team: "Shaboids the Real Dirty Birds", week: 8, points: 51.30 }
+    ];
+
+    // Championship Count by Team
+    const championshipCounts = {};
+    champions.forEach(champ => {
+        championshipCounts[champ.team] = (championshipCounts[champ.team] || 0) + 1;
+    });
+
+    const sortedChampions = Object.entries(championshipCounts)
+        .sort(([,a], [,b]) => b - a)
+        .map(([team, count]) => ({ team, count }));
 </script>
 
 <style>
-	* {
-		color: var(--g555);
-	}
+    .annals-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        color: var(--g555);
+    }
 
-	h3 {
-		margin: 2.5em 0 1.5em;
-	}
+    .header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
 
-	.awards {
-		display: block;
-		position: relative;
-		width: 100%;
-		z-index: 1;
-	}
+    .header h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        color: var(--primaryColor);
+    }
 
-	#podium {
-		width: 600px;
-		height: 500px;
-		position: relative;
-		margin: 10px auto 30px;
-	}
+    .subtitle {
+        font-size: 1.2em;
+        color: var(--g777);
+        font-style: italic;
+    }
 
-	.podiumImage {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: auto;
-		z-index: 3;
-	}
+    .section {
+        margin: 40px 0;
+        background: var(--fff);
+        border-radius: 8px;
+        padding: 25px;
+        box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+    }
 
-	.champ {
-		position: absolute;
-		width: 20%;
-		height: auto;
-		transform: translate(-50%, -50%);
-		border-radius: 100%;
-		border: 1px solid var(--bbb);
-		background-color: var(--fff);
-	}
+    .section-title {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        color: var(--primaryColor);
+        border-bottom: 2px solid var(--primaryColor);
+        padding-bottom: 10px;
+    }
 
-	.laurel {
-		position: absolute;
-		width: 33%;
-		height: auto;
-		transform: translate(-50%, -50%);
-		bottom: 56.6%;
-		left: 50%;
-		pointer-events: none;
-	}
+    .champions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
 
-	.first {
-		bottom: 70%;
-		left: 50%;
-	}
+    .champion-card {
+        background: linear-gradient(135deg, #ffd700, #ffed4e);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        border: 2px solid #daa520;
+        position: relative;
+        overflow: hidden;
+    }
 
-	.second {
-		bottom: 43%;
-		left: 20%;
-	}
+    .champion-card::before {
+        content: "🏆";
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        font-size: 3em;
+        opacity: 0.3;
+    }
 
-	.third {
-		bottom: 39%;
-		left: 80%;
-	}
+    .champion-year {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #8b4513;
+        margin-bottom: 10px;
+    }
 
-	h3 {
-		text-align: center;
-	}
+    .champion-team {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #2c2c2c;
+        margin-bottom: 5px;
+    }
 
-	.leaderBlock {
-		position: relative;
-		width: 80px;
-		height: 119px;
-		margin: 15px auto;
-	}
+    .champion-record {
+        color: #555;
+        font-style: italic;
+    }
 
-	.divisions {
-		display: flex;
-		justify-content: space-around;
-	}
+    .stats-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
 
-	.divisionLeader {
-		position: absolute;
-		width: 70px;
-		height: 70px;
-		transform: translate(-50%, 0%);
-		top: 0;
-		left: 50%;
-		border-radius: 100%;
-		border: 1px solid var(--bbb);
-		background-color: var(--fff);
-		z-index: 3;
-	}
+    .stats-table th,
+    .stats-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--bbb);
+    }
 
-	.medal {
-		position: absolute;
-		width: 40px;
-		height: auto;
-		transform: translate(-50%, 0%);
-		bottom: 0;
-		left: 50%;
-		z-index: 2;
-	}
+    .stats-table th {
+        background-color: var(--primaryColor);
+        color: white;
+        font-weight: bold;
+    }
 
-	.toiletBowl {
-		position: relative;
-		width: 215px;
-		height: 190px;
-		margin: 10px auto;
-	}
+    .stats-table tr:nth-child(even) {
+        background-color: var(--f5f5f5);
+    }
 
-	.toiletWinner {
-		position: absolute;
-		width: 65px;
-		height: 65px;
-		transform: translate(-50%, 0%);
-		top: 20px;
-		left: 55%;
-		border-radius: 100%;
-		border: 1px solid var(--bbb);
-		z-index: 3;
-	}
+    .stats-table tr:hover {
+        background-color: var(--e8f4f8);
+    }
 
-	.toilet {
-		position: absolute;
-		width: 100%;
-		height: auto;
-		transform: translate(-50%, 0%);
-		bottom: 0;
-		left: 50%;
-	}
+    .championship-summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
 
-	.label {
-		white-space: nowrap;
-		line-height: 1.1em;
-		text-align: center;
-		min-height: 34px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		position: absolute;
-		transform: translate(-50%, -50%);
-		padding: 6px 30px;
-		background-color: var(--fff);
-		border: 1px solid var(--bbb);
-        box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
-	}
+    .summary-card {
+        background: var(--f9f9f9);
+        border-radius: 6px;
+        padding: 15px;
+        text-align: center;
+        border-left: 4px solid var(--primaryColor);
+    }
 
-	.firstLabel {
-		bottom: 60%;
-		left: 50%;
-	}
+    .summary-count {
+        font-size: 2em;
+        font-weight: bold;
+        color: var(--primaryColor);
+    }
 
-	.secondLabel {
-		bottom: 40%;
-		left: 20%;
-	}
+    .summary-team {
+        font-size: 0.9em;
+        color: var(--g777);
+        margin-top: 5px;
+    }
 
-	.thirdLabel {
-		bottom: 36%;
-		left: 80%;
-	}
+    .era-note {
+        background: var(--f0f8ff);
+        border-left: 4px solid var(--primaryColor);
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 4px;
+    }
 
-	.genLabel {
-		white-space: nowrap;
-		line-height: 1.1em;
-		min-height: 34px;
-		display: inline-flex;
-		flex-direction: column;
-		justify-content: center;
-		text-align: center;
-		margin: 15px auto 20px;
-		padding: 6px 30px;
-		background-color: var(--fff);
-		border: 1px solid var(--bbb);
-		box-shadow: 0px 3px 3px -2px var(--boxShadowOne), 0px 3px 4px 0px var(--boxShadowTwo), 0px 1px 8px 0px var(--boxShadowThree);
-	}
+    .era-note strong {
+        color: var(--primaryColor);
+    }
 
-	.division {
-		text-align: center;
-	}
-
-	.toiletParent {
-		width: 100%;
-		text-align: center;
-		padding: 25px 0 40px;
-		margin-top: 30px;
-		box-shadow: 0 12px 9px -12px rgba(0,0,0,0.4);
-	}
-
-	.banner {
-		display: block;
-		width: 65%;
-		max-width: 450px;
-		margin: 20px auto 0;
-	}
-
-	.toilet-banner {
-		display: block;
-		width: 50%;
-		max-width: 350px;
-		margin: 20px auto 0;
-	}
-
-	.clickable {
-		cursor: pointer;
-	}
-
-	:global(.curOwner) {
-		font-size: 0.75em;
-		color: var(--bbb);
-		font-style: italic;
-	}
-
-	@media (max-width: 680px) {
-		.label {
-			padding: 6px 8px;
-		}
-		.genLabel {
-			padding: 6px 8px;
-		}
-	}
-
-	@media (max-width: 630px) {
-		.label {
-			font-size: 0.9em;
-		}
-		.genLabel {
-			font-size: 0.9em;
-		}
-	}
-
-	@media (max-width: 610px) {
-		#podium {
-			width: 500px;
-			height: 417px;
-			position: relative;
-			margin: 10px auto 30px;
-		}
-
-		.firstLabel {
-			bottom: 58%;
-		}
-
-		.secondLabel {
-			bottom: 35%;
-		}
-
-		.thirdLabel {
-			bottom: 31%;
-		}
-	}
-
-	@media (max-width: 535px) {
-		.label {
-			font-size: 0.8em;
-		}
-		.genLabel {
-			font-size: 0.8em;
-		}
-	}
-
-	@media (max-width: 520px) {
-		.label {
-			font-size: 0.7em;
-			padding: 2px 4px;
-		}
-		.genLabel {
-			font-size: 0.7em;
-			padding: 2px 4px;
-		}
-	}
-
-	@media (max-width: 510px) {
-		#podium {
-			width: 400px;
-			height: 333px;
-		}
-	}
-
-	@media (max-width: 425px) {
-		.label {
-			font-size: 0.6em;
-		}
-		.genLabel {
-			font-size: 0.6em;
-		}
-	}
-
-	@media (max-width: 410px) {
-		#podium {
-			width: 300px;
-			height: 250px;
-		}
-
-		.firstLabel {
-			bottom: 53%;
-		}
-
-		.secondLabel {
-			bottom: 31%;
-		}
-
-		.thirdLabel {
-			bottom: 27%;
-		}
-	}
-
-	@media (max-width: 329px) {
-		.label {
-			font-size: 0.5em;
-		}
-		.genLabel {
-			font-size: 0.5em;
-		}
-	}
+    @media (max-width: 768px) {
+        .annals-container {
+            padding: 15px;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+        }
+        
+        .section {
+            padding: 15px;
+        }
+        
+        .champions-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .stats-table {
+            font-size: 0.9em;
+        }
+        
+        .stats-table th,
+        .stats-table td {
+            padding: 8px;
+        }
+    }
 </style>
 
-<div class="awards">
-	<h3>{year} Awards</h3>
+<div class="annals-container">
+    <div class="header">
+        <h1>The Annals</h1>
+        <p class="subtitle">A Complete History of The Big Thang Theory Fantasy Football League</p>
+    </div>
 
-	<img src="/banner.png" class="banner" alt="The Champion's Cup" />
+    <div class="era-note">
+        <strong>The NFL.com Era (2015-2024):</strong> Our league's foundational decade, chronicling the rise and fall of fantasy dynasties before our migration to the Sleeper platform in 2025.
+    </div>
 
-	<div id="podium">
-		<img src="/podium.png" class="podiumImage" alt="podium" />
+    <div class="section">
+        <h2 class="section-title">Championship History</h2>
+        <div class="champions-grid">
+            {#each champions as champion}
+                <div class="champion-card">
+                    <div class="champion-year">{champion.year}</div>
+                    <div class="champion-team">{champion.team}</div>
+                    <div class="champion-record">{champion.record}</div>
+                </div>
+            {/each}
+        </div>
+    </div>
 
-		<!-- champs -->
-		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, champion, year)}" class="first champ clickable" onclick={() => gotoManager({year, leagueTeamManagers, rosterID: champion})} alt="champion" />
-		<img src="/laurel.png" class="laurel" alt="laurel" />
-		<span class="label firstLabel clickable" onclick={() => gotoManager({year, leagueTeamManagers, rosterID: champion})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, champion)}</span>
+    <div class="section">
+        <h2 class="section-title">Championship Summary</h2>
+        <div class="championship-summary">
+            {#each sortedChampions as champ}
+                <div class="summary-card">
+                    <div class="summary-count">{champ.count}</div>
+                    <div class="summary-team">{champ.team}</div>
+                </div>
+            {/each}
+        </div>
+    </div>
 
-		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, second, year)}" class="second champ clickable" onclick={() => gotoManager({year, leagueTeamManagers, rosterID: second})} alt="2nd" />
-		<span class="label secondLabel clickable" onclick={() => gotoManager({year, leagueTeamManagers, rosterID: second})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, second)}</span>
+    <div class="section">
+        <h2 class="section-title">Season Scoring Leaders</h2>
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Team</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                {#each seasonScorers as scorer}
+                    <tr>
+                        <td><strong>{scorer.year}</strong></td>
+                        <td>{scorer.team}</td>
+                        <td>{scorer.points}</td>
+                    </tr>
+                {/each}
+            </tbody>
+        </table>
+    </div>
 
-		<img src="{getAvatarFromTeamManagers(leagueTeamManagers, third, year)}" class="third champ clickable" onclick={() => gotoManager({year, leagueTeamManagers, rosterID: third})} alt="3rd" />
-		<span class="label thirdLabel clickable" onclick={() => gotoManager({year, leagueTeamManagers, rosterID: third})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, third)}</span>
-	</div>
-	<div class="divisions">
-		{#each divisions as division}
-			{#if division.rosterID}
-				<div class="division">
-					{#if division.name}
-						<h6>{division.name} Division</h6>
-					{:else}
-						<h6>Regular Season Champion</h6>
-					{/if}
-					<div class="leaderBlock">
-						<img src="{getAvatarFromTeamManagers(leagueTeamManagers, division.rosterID, year)}" class="divisionLeader clickable" onclick={() => gotoManager({year, leagueTeamManagers, rosterID: division.rosterID})} alt="{division.name} champion" />
-						<img src="/medal.png" class="medal" alt="champion" />
-					</div>
-					<span class="genLabel clickable" onclick={() => gotoManager({year, leagueTeamManagers, rosterID: division.rosterID})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, division.rosterID)}</span>
-				</div>
-			{/if}
-		{/each}
-	</div>
+    <div class="section">
+        <h2 class="section-title">Weekly High Scorers</h2>
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Player</th>
+                    <th>Position</th>
+                    <th>Team</th>
+                    <th>Week</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                {#each weeklyScorers as scorer}
+                    <tr>
+                        <td><strong>{scorer.year}</strong></td>
+                        <td>{scorer.player}</td>
+                        <td>{scorer.position}</td>
+                        <td>{scorer.team}</td>
+                        <td>{scorer.week}</td>
+                        <td>{scorer.points}</td>
+                    </tr>
+                {/each}
+            </tbody>
+        </table>
+    </div>
 
-		<!-- Toilet Bowl -->
-	{#if toilet}
-		<div class="toiletParent">
-			
-			<img src="/toilet-banner.png" class="toilet-banner" alt="The Toilet Bowl" />
-
-			<div class="toiletBowl">
-				<img src="{getAvatarFromTeamManagers(leagueTeamManagers, toilet, year)}" class="toiletWinner clickable" onclick={() => gotoManager({year, leagueTeamManagers, rosterID: toilet})} alt="toilet bowl winner" />
-				<img src="/toilet-bowl-2.png" class="toilet" alt="toilet bowl" />
-			</div>
-			<span class="genLabel clickable" onclick={() => gotoManager({year, leagueTeamManagers, rosterID: toilet})}>{@html getNestedTeamNamesFromTeamManagers(leagueTeamManagers, year, toilet)}</span>
-		</div>
-	{/if}
+    <div class="section">
+        <h2 class="section-title">League Legacy</h2>
+        <p>From 2015 to 2024, The Big Thang Theory league witnessed incredible performances, fierce rivalries, and unforgettable moments. As we transition to the Sleeper platform in 2025, we carry forward this rich history while building toward new traditions.</p>
+        
+        <p><strong>Notable Achievements:</strong></p>
+        <ul>
+            <li>Highest Single Season: Champagnemarinade (2022) - 1,588.18 points</li>
+            <li>Best Regular Season Record: Pack of Wild Bonzo's (2018) - 11-2-0</li>
+            <li>Most Championships: Pack of Wild Bonzo's (3 titles)</li>
+            <li>Highest Weekly Score: J. Allen (2024) - 54.88 points</li>
+        </ul>
+    </div>
 </div>
