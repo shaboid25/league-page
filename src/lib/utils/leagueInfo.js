@@ -17,7 +17,7 @@ export const homepageText = `
 
 <p>Have questions about the new platform or want to provide feedback? Reach out to your commissioner at commish@thebigthangtheory.com</p>
 
-<p>Let's make this our best season yet! 
+<p>Let's make this our best season yet! </p>
 `;
 
 /*   STEP 3   */
