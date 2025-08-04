@@ -58,7 +58,7 @@ export const tabs = [
             },
             {
                 icon: 'emoji_events',
-                label: 'Trophy Room',
+                label: 'The Annals',
                 dest: '/awards',
             },
             {
