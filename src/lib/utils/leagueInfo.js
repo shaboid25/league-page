@@ -178,7 +178,7 @@ export const managers = [
     },
     {
     "roster": 8,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-    "name": "Stephanie",
+    "name": "TBD",
     "location": "Unknown, OR", // (optional)
     "bio": "Lorem ipsum...",
     "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
