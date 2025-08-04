@@ -13,7 +13,7 @@ export const homepageText = `
 
 <p>We currently have 6 of 10 managers signed up on Sleeper. If you haven't joined yet, please download the Sleeper app and join our league ASAP - fantasy season is approaching fast!</p>
 
-<p>Check out "The Annals" section to browse our complete league history from the NFL.com era. As we move past the decade mark of this league, we're excited to build new traditions while honoring our championship legacy.</p>
+<p>Check out "<a href="/awards" target="_blank">The Annals</a>" section to browse our complete league history from the NFL.com era. As we move past the decade mark of this league, we're excited to build new traditions while honoring our championship legacy.</p>
 
 <p>Have questions about the new platform or want to provide feedback? Reach out to your commissioner at commish@thebigthangtheory.com</p>
 
