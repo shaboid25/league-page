@@ -7,14 +7,17 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>This is an example of what our league website would look like if we started using the Sleeper Fantasy platform. This has been built using Svelte and SvelteKit
-Desktop, Mobile and PWA compatible
-League information generated from Sleeper API</p>
-  <p>If you would be okay with migrating platforms away from fantasy.nfl.com, please indicate that on the survey that is being released prior to the Super Bowl</p>
-  <p>If you have no confidence in Jacob Conley as the commissioner, please send an email to commish@thebigthangtheory.com</p>
-  <p>As we move past the decade mark of the league, changes are undoubtedly going occur. Your input is always valued and can be submitted to commish@thebigthangtheory.com</p>
-  <p>We will be able to maintain the historical records for the league, as well as expand on how these records are held moving forward.</p>
-  <p>If you have any questions, please let me know.</p>
+  <p>Welcome to the official home of The Big Thang Theory Fantasy Football League! We've successfully migrated from NFL.com to the Sleeper platform and launched our custom league website.</p>
+
+<p>Built with Svelte and SvelteKit, this site is fully responsive across desktop, mobile, and PWA-compatible devices. All league data is pulled live from the Sleeper API to keep everything current.</p>
+
+<p>We currently have 6 of 10 managers signed up on Sleeper. If you haven't joined yet, please download the Sleeper app and join our league ASAP - fantasy season is approaching fast!</p>
+
+<p>Check out "The Annals" section to browse our complete league history from the NFL.com era. As we move past the decade mark of this league, we're excited to build new traditions while honoring our championship legacy.</p>
+
+<p>Have questions about the new platform or want to provide feedback? Reach out to your commissioner at commish@thebigthangtheory.com</p>
+
+<p>Let's make this our best season yet! 
 `;
 
 /*   STEP 3   */
