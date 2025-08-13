@@ -33,7 +33,7 @@ export const managers = [
     {
     "roster": 1,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
     "name": "Jake Conley",
-    "managerID" : "shaboid",
+    "managerID" : "1188632688818077696",
     "tookOver": "null", // (optional) used if a manager took over a team, delete this line or change to null otherwise
     "location": "Stayton, OR", // (optional)
     "bio": "Lorem ipsum...",
@@ -54,8 +54,9 @@ export const managers = [
     "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-    "roster": 2,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    "roster": 3,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
     "name": "Justin Stinson",
+    "managerID" : "1251620631418503168",
     "location": "Lyons, OR", // (optional)
     "bio": "Lorem ipsum...",
     "photo": "/managers/packofwildbonzos.jpg", // square ratio recommended (no larger than 500x500)
@@ -75,8 +76,9 @@ export const managers = [
     "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-    "roster": 3,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    "roster": 6,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
     "name": "Rob Rooney",
+    "managerID" : "1257846612181397504",
     "location": "Salem, OR", // (optional)
     "bio": "Lorem ipsum...",
     "photo": "/managers/champagnemarinade.jpg", // square ratio recommended (no larger than 500x500)
@@ -96,8 +98,9 @@ export const managers = [
     "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-    "roster": 4,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    "roster": 2,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
     "name": "David Neely",
+    "managerID" : "1251612697666002944",
     "location": "Keizer, OR", // (optional)
     "bio": "Lorem ipsum...",
     "photo": "/managers/spotieotiedopealiciousangle.jpg", // square ratio recommended (no larger than 500x500)
@@ -119,6 +122,7 @@ export const managers = [
     {
     "roster": 5,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
     "name": "Shawn Rooney",
+    "managerID" : "1253136832061784064",
     "location": "Aumsville, OR", // (optional)
     "bio": "Lorem ipsum...",
     "photo": "/managers/mudhens.jpg", // square ratio recommended (no larger than 500x500)
@@ -138,8 +142,9 @@ export const managers = [
     "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-    "roster": 6,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    "roster": 10,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
     "name": "Enoch",
+    "managerID" : "1259832933615665152",
     "location": "Unknown, OR", // (optional)
     "bio": "Lorem ipsum...",
     "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -159,8 +164,9 @@ export const managers = [
     "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-    "roster": 7,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    "roster": 8,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
     "name": "Nate Kofi",
+    "managerID" : "1258156454897012736",
     "location": "Unknown, OR", // (optional)
     "bio": "Lorem ipsum...",
     "photo": "/managers/NWlove.png", // square ratio recommended (no larger than 500x500)
@@ -180,8 +186,9 @@ export const managers = [
     "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-    "roster": 8,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-    "name": "TBD",
+    "roster": 9,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    "name": "B3astQuak3",
+    "managerID" : "1259276839478636544",
     "location": "Unknown, OR", // (optional)
     "bio": "Lorem ipsum...",
     "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
@@ -201,8 +208,9 @@ export const managers = [
     "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-    "roster": 9,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    "roster": 4,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
     "name": "Logan Rooney",
+    "managerID" : "1252832490129723392",
     "location": "Unknown, OR", // (optional)
     "bio": "Lorem ipsum...",
     "photo": "/managers/88dancingsbears.jpg", // square ratio recommended (no larger than 500x500)
@@ -222,8 +230,9 @@ export const managers = [
     "preferredContact": "Text", // 'Text', 'WhatsApp', 'Sleeper', 'Email', 'Phone', 'Discord', and 'Carrier Pigeon' are currently supplied in the template
     },
     {
-    "roster": 10,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
+    "roster": 7,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
     "name": "Brunk Conley",
+    "managerID" : "1257979980797706240",
     "location": "La Pine, OR", // (optional)
     "bio": "Lorem ipsum...",
     "photo": "/managers/name.jpg", // square ratio recommended (no larger than 500x500)
