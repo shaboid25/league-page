@@ -189,7 +189,7 @@ export const managers = [
     },
     {
     "roster": 9,  // ID of the roster that the manager manages (look at the order of the power rankings graph)
-    "name": "B3astQuak3",
+    "name": "Matt Rauch",
     "managerID" : "1259276839478636544",
     "location": "Unknown, OR", // (optional)
     "bio": "Lorem ipsum...",
