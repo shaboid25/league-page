@@ -11,13 +11,11 @@ export const homepageText = `
 
 <p>Built with Svelte and SvelteKit, this site is fully responsive across desktop, mobile, and PWA-compatible devices. All league data is pulled live from the Sleeper API to keep everything current.</p>
 
-<p>We currently have all managers signed up on Sleeper. There is a poll that can be found here: <a href="https://doodle.com/group-poll/participate/dwgpjAJd" target="_blank">
-  Vote for Draft Date & Time
-</a> Please let me know once you have completed the poll</p>
-
 <p>Check out "<a href="/awards" target="_blank">The Annals</a>" section to browse our complete league history from the NFL.com era. As we move past the decade mark of this league, we're excited to build new traditions while honoring our championship legacy.</p>
 
 <p>Have questions about the new platform or want to provide feedback? Reach out to your commissioner at commish@thebigthangtheory.com</p>
+
+<p>We look forward to a fun filled year and can't wait to crown a new champion in our 10th year!</p>
 
 <p>Let's make this our best season yet! </p>
 `;
